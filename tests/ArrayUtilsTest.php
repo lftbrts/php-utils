@@ -137,14 +137,13 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
             )
         );
         $keys = ArrayUtils::array_walkup('lemon', $arr);
-        var_dump($keys);
-        // so the structure should be $arr['pink'][1]['lemon']
+        // so the structure should be $arr['pink'][1]['juice']
         $this->assertNotFalse($keys);
         $this->assertCount(3, $keys);
         $this->assertContains('pink', $keys);
         $this->assertContains(1, $keys);
-        $this->assertContains('lemon', $keys);
-        $this->assertEquals('juice', $arr[$keys[0]][$keys[1]][$keys[2]]);
+        $this->assertContains('juice', $keys);
+        $this->assertEquals('lemon', $arr[$keys[0]][$keys[1]][$keys[2]]);
 
         $arr = array(
             'foo' => 'baz',
