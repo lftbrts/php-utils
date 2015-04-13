@@ -132,11 +132,12 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
             'pink' => array(
                 'panther',
                 array(
-                    'lime' => 'juice'
+                    'juice' => 'lemon'
                 )
             )
         );
-        $keys = ArrayUtils::array_walkup('juice', $arr);
+        $keys = ArrayUtils::array_walkup('lemon', $arr);
+        var_dump($keys);
         // so the structure should be $arr['pink'][1]['lime']
         $this->assertNotFalse($keys);
         $this->assertCount(3, $keys);
@@ -150,11 +151,11 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
             'pink' => array(
                 'panther',
                 array(
-                    'lime' => 'juice'
+                    'juice' => 'lemon'
                 )
             )
         );
-        $keys = ArrayUtils::array_walkup('lemmon', $arr);
+        $keys = ArrayUtils::array_walkup('strawberry', $arr);
         $this->assertFalse($keys);
     }
 
