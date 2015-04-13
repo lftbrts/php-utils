@@ -1,6 +1,8 @@
 {
 	"name" : "ideaworks/php-utils",
 	"minimum-stability": "stable",
+	"description": "A collection of String, Date and Array manipulations and checks.",
+	"keywords": ["compare string", "compare date", "manipulate array", "compare array", "calculate date", "date ranges intersect", "array walk"],
 	"license" : "MIT",
 	"authors" : [{
 			"name" : "Ulf Tiburtius",
