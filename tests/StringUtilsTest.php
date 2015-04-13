@@ -10,6 +10,14 @@ use Ideaworks\Utils\Str as StringUtils;
 class StringUtilsTest extends \PHPUnit_Framework_TestCase
 {
 
+<<<<<<< HEAD
+=======
+    public function setUp()
+    {
+        echo ' ' . $this->getName() . PHP_EOL;
+    }
+
+>>>>>>> feature/arrayutils
     public function testAreEqualReverse()
     {
         $this->assertTrue(StringUtils::areEqualReverse('password', 'drowssap'));
