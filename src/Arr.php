@@ -10,6 +10,8 @@ class Arr
 {
 
     /**
+     * Determine if an array is associative.
+     *
 	 * @param array $array
 	 * @return boolean
 	 */
@@ -18,10 +20,12 @@ class Arr
 	}
 
     /**
+     * Remove key(s) from an array.
      *
      * @param array Array from which the key(s) should be removed.
      * @param mixed Key(s) to remove from array
      * @return array
+     * @example $result = Arr::array_remove_key($arr, 0, 1, 'foo');
      */
     public static function array_remove_key()
     {
@@ -30,10 +34,13 @@ class Arr
     }
 
     /**
+     * Remove value(s) from an array.
      *
+     * @example $result = Arr::array_remove_value($arr, 'foo', 'baz');
      * @param array Array from which the value(s) should be removed.
      * @param mixed Value(s) to remove from array
      * @return array
+     * @example $result = Arr::array_remove_value($arr, 'bear');
      */
     public static function array_remove_value()
     {
@@ -42,10 +49,11 @@ class Arr
     }
 
     /**
-     * Remove all empty values of an array.
+     * Remove all empty values from an array.
      *
-     * @param array Array from which the empty values should be removed
+     * @param array
      * @return array
+     * @example $result = Arr::array_remove_empty_value($arr);
      */
     public static function array_remove_empty_value()
     {
@@ -67,12 +75,12 @@ class Arr
     /**
      * Search for the structure by a given value on a multidimensional array.
      * This will break execution on the first occurrence of the matched value.
-     * @Example $keys = array_walkup(3, $arr); echo "3 has been found in \$arr[".implode('][', $keys)."]";
      *
      * @param mixed $needle
      * @param array $array
      * @param array $keys
      * @return array|false
+     * @example $keys = array_walkup(3, $arr); echo "3 has been found in \$arr[".implode('][', $keys)."]";
      */
     public static function array_walkup($needle, array $haystack, array $keys = array())
     {
