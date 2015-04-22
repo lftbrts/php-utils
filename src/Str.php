@@ -63,6 +63,7 @@ class Str
      */
     public static function maxLength($str, $length)
     {
+        self::assertString($str);
         return (strlen((string) $str) <= $length);
     }
 
@@ -75,6 +76,7 @@ class Str
      */
     public static function minLength($str, $length)
     {
+        self::assertString($str);
         return (strlen((string) $str) >= $length);
     }
 
@@ -86,6 +88,7 @@ class Str
      */
     public static function isEmpty($str)
     {
+        self::assertString($str);
         if (! isset($str)) {
             return true;
         } elseif (preg_match('/^\s*$/', $str)) {
@@ -93,5 +96,21 @@ class Str
         } else {
             return false;
         }
+    }
+
+    /**
+     * @param string $value
+     * @return void
+     * @throws \InvalidArgumentException
+     */
+    protected static function assertString($str)
+    {
+        if (!empty($str)) {
+            $ar = 0;
+            if (preg_match('/^.{1}/us', $str, $ar) != 1) {
+                throw new \InvalidArgumentException('string contains invalid UTF-8');
+            }
+        }
+
     }
 }
