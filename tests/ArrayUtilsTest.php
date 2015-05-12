@@ -160,7 +160,7 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
 
     public function testArray_change_key()
     {
-        $arr = ['foo' => 'baz', 'baz' => 'foo'];
+        $arr = array('foo' => 'baz', 'baz' => 'foo');
         $arr = ArrayUtils::array_change_key($arr, 'foo', 'Foo');
         $arr = ArrayUtils::array_change_key($arr, 'baz', 'Baz');
 
@@ -170,11 +170,11 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
 
     public function testArray_contains_keys()
     {
-        $haystack = ['foo' => 'baz', 'baz' => 'foo', 'lorem' => 'ipsum'];
-        $needle = ['foo', 'lorem'];
+        $haystack = array('foo' => 'baz', 'baz' => 'foo', 'lorem' => 'ipsum');
+        $needle = array('foo', 'lorem');
 
         $this->assertTrue(ArrayUtils::array_contain_keys($needle, $haystack));
-        $this->assertFalse(ArrayUtils::array_contain_keys(['lirum'], $haystack));
+        $this->assertFalse(ArrayUtils::array_contain_keys(array('lirum'), $haystack));
     }
 
 }

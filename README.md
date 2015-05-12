@@ -68,6 +68,18 @@ Remove key(s) from an array.
     $res = Arr::array_remove_key($arr, 'baz'); // $res == $arr
 ```
 
+**Arr::array_change_key($array, $oldkey, $newkey)**  
+Change a key of an associative array.
+
+```php
+    $arr = array('foo', 'baz');
+    $arr = Arr::array_change_key($arr, 'foo', 'Foo'); // $arr contains key 'Foo'
+```
+
+**Arr::array_contain_keys(array $needle, array $haystack)**  
+Check if an associative array contains certain keys.
+Searches haystack for needle.
+
 **Arr::array_remove_value($array, ...)**  
 Remove value(s) from an array.
 
