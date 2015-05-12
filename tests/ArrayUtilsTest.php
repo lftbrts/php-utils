@@ -158,4 +158,23 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse($keys);
     }
 
+    public function testArray_change_key()
+    {
+        $arr = ['foo' => 'baz', 'baz' => 'foo'];
+        $arr = ArrayUtils::array_change_key($arr, 'foo', 'Foo');
+        $arr = ArrayUtils::array_change_key($arr, 'baz', 'Baz');
+
+        $this->assertArrayHasKey('Foo', $arr);
+        $this->assertArrayHasKey('Baz', $arr);
+    }
+
+    public function testArray_contains_keys()
+    {
+        $haystack = ['foo' => 'baz', 'baz' => 'foo', 'lorem' => 'ipsum'];
+        $needle = ['foo', 'lorem'];
+
+        $this->assertTrue(ArrayUtils::array_contain_keys($needle, $haystack));
+        $this->assertFalse(ArrayUtils::array_contain_keys(['lirum'], $haystack));
+    }
+
 }

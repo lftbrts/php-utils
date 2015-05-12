@@ -2,7 +2,6 @@
 namespace Ideaworks\Utils;
 
 /**
- *
  * @author Ulf Tiburtius <ulf@idea-works.de>
  * @since April 12, 2015
  */
@@ -34,6 +33,42 @@ class Arr
     }
 
     /**
+     * Change a key of an associative array.
+     *
+     * @param array $array
+     * @param string $oldKey
+     * @param string $newKey
+     * @return array
+     */
+    public static function array_change_key(array $array, $oldKey, $newKey)
+    {
+        if (! array_key_exists($oldKey, $array) || ! self::array_is_assoc($array)) {
+            return $array;
+        }
+
+        $keys = array_keys($array);
+        $keys[array_search($oldKey, $keys)] = $newKey;
+
+        return array_combine($keys, $array);
+    }
+
+    /**
+     * Check if an associative array contains certain keys.
+     * Searches haystack for needle.
+     *
+     * @param array $needle
+     * @param array $haystack
+     * @return boolean
+     */
+    public static function array_contain_keys(array $needle, array $haystack)
+    {
+        if (count(array_intersect_key(array_flip($needle), $haystack)) === count($needle)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * Remove value(s) from an array.
      *
      * @example $result = Arr::array_remove_value($arr, 'foo', 'baz');
@@ -59,9 +94,9 @@ class Arr
     {
         $args = func_get_args();
         $array = array();
-        if (!empty($args)) {
+        if (! empty($args)) {
             $array = $args[0];
-            if (!empty($array) || true == is_array($array)) {
+            if (! empty($array) || true == is_array($array)) {
                 // The fastest way in PHP: faster then array_diff() or array_filter()
                 $emptyelements = array_keys($array, '');
                 foreach ($emptyelements as $element) {
