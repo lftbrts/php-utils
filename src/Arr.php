@@ -135,4 +135,28 @@ class Arr
         return false;
     }
 
+    /**
+     * Reverses the order of an array group-wise.
+     *
+     * @param array $arr
+     * @param integer $set
+     * @return array
+     */
+    public static function array_reverse_sets(array $arr = array(), $set = 0)
+    {
+        if(! is_array($arr) || count($arr) % $set != 0)
+        {
+            return $arr;
+        }
+        $result = array();
+        for($i = 0; $i < count($arr); $i += $set)
+        {
+            for($j = 0; $j < $set; $j++)
+            {
+                array_push($result, $arr[count($arr) - $i + $j - $set]);
+            }
+        }
+        return $result;
+    }
+
 }

@@ -141,6 +141,17 @@ This will break execution on the first occurrence of the matched value.
     }
 ```
 
+**Arr::array_reverse_sets($array, integer)**  
+Reverses the order of an array group-wise.
+
+```php
+	$arr = array(1,2,3,4,5,6,7,8,9,10,11,12);
+	
+	// cut the $arr into 3 groups in reversed order
+	$res = Arr::array_reverse_sets($arr, 3); // $res = [10,11,12,7,8,9,4,5,6,1,2,3]
+```
+
+
 ###Dt  
 A collection of methods for calculating and checking dates.
 

@@ -177,4 +177,17 @@ class ArrayUtilsTest extends \PHPUnit_Framework_TestCase
         $this->assertFalse(ArrayUtils::array_contain_keys(array('lirum'), $haystack));
     }
 
+    public function testArray_reverse_sets()
+    {
+        $arr = array(1,2,3,4,5,6,7,8,9,10,11,12);
+        $out = ArrayUtils::array_reverse_sets($arr, 6);
+        $this->assertEquals($out, array(7,8,9,10,11,12,1,2,3,4,5,6));
+
+        $out = ArrayUtils::array_reverse_sets($arr, 2);
+        $this->assertEquals($out, array(11,12,9,10,7,8,5,6,3,4,1,2));
+
+        $out = ArrayUtils::array_reverse_sets($arr, 3);
+        $this->assertEquals($out, array(10,11,12,7,8,9,4,5,6,1,2,3));
+    }
+
 }
