@@ -1,6 +1,6 @@
 ## PHP Utils
 
-[![Build Status](https://travis-ci.org/ut42/php-utils.svg?branch=master)](https://travis-ci.org/ut42/php-utils) [![License](https://poser.pugx.org/ideaworks/php-utils/license.svg)](https://packagist.org/packages/ideaworks/php-utils)
+[![Build Status](https://travis-ci.org/lftbrts/php-utils.svg?branch=master)](https://travis-ci.org/ut42/php-utils) [![License](https://poser.pugx.org/ideaworks/php-utils/license.svg)](https://packagist.org/packages/ideaworks/php-utils)
 
 A collection of String, Date and Array manipulations and checks.
 
