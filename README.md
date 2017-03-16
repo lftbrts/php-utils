@@ -14,7 +14,7 @@ Install the package through [Composer](http://getcomposer.org/). Edit your proje
 
 ```php
 "require": {
-	"ideaworks/php-utils": "dev-master"
+	"lftbrts/php-utils": "dev-master"
 }
 ```
 

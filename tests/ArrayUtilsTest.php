@@ -1,7 +1,7 @@
 <?php
-namespace Ideaworks\Tests;
+namespace lftbrts\Tests;
 
-use Ideaworks\Utils\Arr as ArrayUtils;
+use lftbrts\Utils\Arr as ArrayUtils;
 
 /**
  *

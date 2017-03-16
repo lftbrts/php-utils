@@ -1,5 +1,5 @@
 <?php
-namespace Ideaworks\Utils;
+namespace lftbrts\Utils;
 
 /**
  *

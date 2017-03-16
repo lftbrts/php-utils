@@ -1,7 +1,7 @@
 <?php
-namespace Ideaworks\Tests;
+namespace lftbrts\Tests;
 
-use Ideaworks\Utils\Dt as DateUtils;
+use lftbrts\Utils\Dt as DateUtils;
 
 /**
  *

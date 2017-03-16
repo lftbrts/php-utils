@@ -1,7 +1,7 @@
 <?php
-namespace Ideaworks\Tests;
+namespace lftbrts\Tests;
 
-use Ideaworks\Utils\Str as StringUtils;
+use lftbrts\Utils\Str as StringUtils;
 
 /**
  * @author Ulf Tiburtius <ulf@idea-works.de>
