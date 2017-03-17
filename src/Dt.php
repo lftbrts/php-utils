@@ -8,12 +8,12 @@ namespace lftbrts\Utils;
  */
 class Dt
 {
-
     /**
      * Retrieve the days between two dates.
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
+     *
      * @return number
      */
     public static function getDateRangeDays(\DateTime $startDate, \DateTime $endDate)
@@ -36,6 +36,7 @@ class Dt
      * @param \DateTime $startDate
      * @param \DateTime $endDate
      * @param \DateTime $checkDate
+     *
      * @return boolean
      */
     public static function checkInDateRange(\DateTime $startDate, \DateTime $endDate, \DateTime $checkDate)
@@ -54,6 +55,7 @@ class Dt
      * @param string $endDate1
      * @param string $startDate2
      * @param string $endDate2
+     *
      * @return boolean|number If the ranges intersects, a number of days (total) is returned. Otherwise FALSE is returned.
      */
     public static function intersectDateRanges($startDate1, $endDate1, $startDate2, $endDate2)
@@ -76,6 +78,7 @@ class Dt
      *
      * @param \DateTime $date
      * @param integer $months
+     *
      * @return \DateTime
      */
     public static function addMonths(\DateTime $date, $months)
@@ -89,7 +92,7 @@ class Dt
         $back_to_init = clone $date;
         $back_to_init->modify($back_modifier);
 
-        while ($init->format('m') != $back_to_init->format('m')) {
+        while ($init->format('m') !== $back_to_init->format('m')) {
             $date->modify('-1 day');
             $back_to_init = clone $date;
             $back_to_init->modify($back_modifier);
@@ -103,6 +106,7 @@ class Dt
      *
      * @param \DateTime $date
      * @param integer $years
+     *
      * @return \DateTime
      */
     public static function addYears(\DateTime $date, $years)
@@ -111,7 +115,7 @@ class Dt
         $modifier = (integer) $years . ' years';
         $date->modify($modifier);
 
-        while ($date->format('m') != $init->format('m')) {
+        while ($date->format('m') !== $init->format('m')) {
             $date->modify('-1 day');
         }
 

@@ -7,13 +7,13 @@ namespace lftbrts\Utils;
  */
 class Str
 {
-
     /**
      * Determine if a string is equal to a reversed string.
      *
      * @param string $str1
      * @param string $str2
      * @param boolean $casesensitive defaults to TRUE
+     *
      * @return boolean
      */
     public static function areEqualReverse($str1, $str2, $casesensitive = true)
@@ -30,7 +30,8 @@ class Str
      * @param string $str1
      * @param string $str2
      * @param boolean $casesensitiv defaults to TRUE
-     * @return boolen
+     *
+     * @return boolean
      */
     public static function areEqual($str1, $str2, $casesensitiv = true)
     {
@@ -44,14 +45,12 @@ class Str
      * Check whether a string contains at least one NULL byte.
      *
      * @param string $str
+     *
      * @return boolean
      */
     public static function containsNullByte($str)
     {
-        if (strpos($str, chr(0)) === false) {
-            return false;
-        }
-        return true;
+        return !(strpos($str, chr(0)) === false);
     }
 
     /**
@@ -59,6 +58,7 @@ class Str
      *
      * @param string $str
      * @param integer $length
+     *
      * @return boolean TRUE if its smaller or equal to given length, FALSE if not
      */
     public static function maxLength($str, $length)
@@ -72,6 +72,7 @@ class Str
      *
      * @param string $str
      * @param integer $length
+     *
      * @return boolean TRUE if its larger or equal to given length, FALSE if not
      */
     public static function minLength($str, $length)
@@ -89,17 +90,12 @@ class Str
     public static function isEmpty($str)
     {
         self::assertString($str);
-        if (! isset($str)) {
-            return true;
-        } elseif (preg_match('/^\s*$/', $str)) {
-            return true;
-        } else {
-            return false;
-        }
+        return (null === $str || preg_match('/^\s*$/', $str));
     }
 
     /**
-     * @param string $value
+     * @param string $str
+     *
      * @return void
      * @throws \InvalidArgumentException
      */
@@ -107,10 +103,9 @@ class Str
     {
         if (!empty($str)) {
             $ar = 0;
-            if (preg_match('/^.{1}/us', $str, $ar) != 1) {
+            if (preg_match('/^.{1}/us', $str, $ar) !== 1) {
                 throw new \InvalidArgumentException('string contains invalid UTF-8');
             }
         }
-
     }
 }

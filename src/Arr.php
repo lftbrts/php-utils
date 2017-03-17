@@ -7,22 +7,23 @@ namespace lftbrts\Utils;
  */
 class Arr
 {
-
     /**
      * Determine if an array is associative.
      *
-	 * @param array $array
-	 * @return boolean
-	 */
-	public static function array_is_assoc(array $array) {
-		return (is_array($array) && 0 !== count(array_diff_key($array, array_keys(array_keys($array)))));
-	}
+     * @param array $array
+     *
+     * @return boolean
+     */
+    public static function array_is_assoc(array $array) {
+        return (is_array($array) && 0 !== count(array_diff_key($array, array_keys(array_keys($array)))));
+    }
 
     /**
      * Remove key(s) from an array.
      *
      * @param array Array from which the key(s) should be removed.
      * @param mixed Key(s) to remove from array
+     *
      * @return array
      * @example $result = Arr::array_remove_key($arr, 0, 1, 'foo');
      */
@@ -38,16 +39,17 @@ class Arr
      * @param array $array
      * @param string $oldKey
      * @param string $newKey
+     *
      * @return array
      */
     public static function array_change_key(array $array, $oldKey, $newKey)
     {
-        if (! array_key_exists($oldKey, $array) || ! self::array_is_assoc($array)) {
+        if (!array_key_exists($oldKey, $array) || !self::array_is_assoc($array)) {
             return $array;
         }
 
         $keys = array_keys($array);
-        $keys[array_search($oldKey, $keys)] = $newKey;
+        $keys[array_search($oldKey, $keys, false)] = $newKey;
 
         return array_combine($keys, $array);
     }
@@ -58,14 +60,12 @@ class Arr
      *
      * @param array $needle
      * @param array $haystack
+     *
      * @return boolean
      */
     public static function array_contain_keys(array $needle, array $haystack)
     {
-        if (count(array_intersect_key(array_flip($needle), $haystack)) === count($needle)) {
-            return true;
-        }
-        return false;
+        return (count(array_intersect_key(array_flip($needle), $haystack)) === count($needle));
     }
 
     /**
@@ -74,6 +74,7 @@ class Arr
      * @example $result = Arr::array_remove_value($arr, 'foo', 'baz');
      * @param array Array from which the value(s) should be removed.
      * @param mixed Value(s) to remove from array
+     *
      * @return array
      * @example $result = Arr::array_remove_value($arr, 'bear');
      */
@@ -87,19 +88,20 @@ class Arr
      * Remove all empty values from an array.
      *
      * @param array
+     *
      * @return array
      * @example $result = Arr::array_remove_empty_value($arr);
      */
     public static function array_remove_empty_value()
     {
         $args = func_get_args();
-        $array = array();
-        if (! empty($args)) {
+        $array = [];
+        if (!empty($args)) {
             $array = $args[0];
-            if (! empty($array) || true == is_array($array)) {
+            if (!empty($array) || is_array($array)) {
                 // The fastest way in PHP: faster then array_diff() or array_filter()
-                $emptyelements = array_keys($array, '');
-                foreach ($emptyelements as $element) {
+                $emptyElements = array_keys($array, '');
+                foreach ($emptyElements as $element) {
                     unset($array[$element]);
                 }
             }
@@ -112,19 +114,20 @@ class Arr
      * This will break execution on the first occurrence of the matched value.
      *
      * @param mixed $needle
-     * @param array $array
+     * @param array $haystack
      * @param array $keys
+     *
      * @return array|false
      * @example $keys = array_walkup(3, $arr); echo "3 has been found in \$arr[".implode('][', $keys)."]";
      */
     public static function array_walkup($needle, array $haystack, array $keys = array())
     {
-        if (true == in_array($needle, $haystack)) {
-            array_push($keys, array_search($needle, $haystack));
+        if (true === in_array($needle, $haystack, false)) {
+            $keys[] = array_search($needle, $haystack, false);
             return $keys;
         }
         foreach ($haystack as $key => $value) {
-            if (true == is_array($value)) {
+            if (is_array($value)) {
                 $k = $keys;
                 $k[] = $key;
                 if (($find = self::array_walkup($needle, $value, $k)) !== false) {
@@ -140,20 +143,18 @@ class Arr
      *
      * @param array $arr
      * @param integer $set
+     *
      * @return array
      */
-    public static function array_reverse_sets(array $arr = array(), $set = 0)
+    public static function array_reverse_sets(array $arr = [], $set = 0)
     {
-        if(! is_array($arr) || count($arr) % $set != 0)
-        {
+        if (!is_array($arr) || count($arr) % $set !== 0) {
             return $arr;
         }
-        $result = array();
-        for($i = 0; $i < count($arr); $i += $set)
-        {
-            for($j = 0; $j < $set; $j++)
-            {
-                array_push($result, $arr[count($arr) - $i + $j - $set]);
+        $result = [];
+        for($i = 0, $iMax = count($arr); $i < $iMax; $i += $set) {
+            for($j = 0; $j < $set; $j++) {
+                $result[] = $arr[count($arr) - $i + $j - $set];
             }
         }
         return $result;
